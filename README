@@ -1,0 +1,18 @@
+This code works as follows:
+It takes the parameter file parameters_file.dat to read the length of the simulation, the number of 
+cells per axis and the path of the binary data file.
+
+With this information, it performs a reading of the binary data file to obtain masses, 
+positions (x,y,z) and velocities (vx,vy,vz) of the particles.
+
+Then, a Cloud-In-Cell algorithm is performed in order to compute the density field of the particles. 
+It is performed as follows: The simulation box is divided in the number of cells per axis powered 
+to the cube. Then, each particle is localized in each cell. Once each particle is located, 
+the density computation is performed in order to find the smoothed density field using the CIC 
+windows function. In the same routine, the momentum computation is performed with the same window 
+function as for the density computation.
+
+Finally, a data file with index of each cell, number of particles per cell, position, momentum, 
+density and density contrast is saved in the HDD.
+
+
